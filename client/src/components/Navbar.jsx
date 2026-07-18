@@ -48,8 +48,7 @@ export default function Navbar() {
     toast.success("Logged out successfully");
 
     setTimeout(() => {
-      navigate("/login");
-      window.location.reload();
+      navigate("/login", { replace: true });
     }, 800);
   };
 
