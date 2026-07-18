@@ -26,14 +26,7 @@ export default function App() {
         <Routes>
           {/* Home */}
 
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/" element={<Home />} />
 
           {/* Authentication */}
 

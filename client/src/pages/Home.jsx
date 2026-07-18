@@ -23,6 +23,8 @@ export default function Home() {
   const [selected, setSelected] = useState(null);
   const [toDelete, setToDelete] = useState(null);
 
+  const token = localStorage.getItem("token");
+
   // ===============================
   // Fetch Movies From Backend
   // ===============================
@@ -35,7 +37,12 @@ export default function Home() {
       } catch (error) {
         console.error(error);
 
-        toast.error(error.response?.data?.message || "Failed to load movies");
+        if (error.response?.status === 401) {
+          // Guest user
+          setMovies([]);
+        } else {
+          toast.error(error.response?.data?.message || "Failed to load movies");
+        }
       } finally {
         setLoading(false);
       }
